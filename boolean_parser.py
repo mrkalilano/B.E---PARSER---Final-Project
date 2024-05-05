@@ -42,7 +42,27 @@ class Parser:
         return left
 
     def expr(self):
-        return self.term()
+        result = self.term()
+
+        while self.current_token.type in (TokenType.OR,):
+            op = self.current_token
+            self.advance()
+            right = self.term()
+            result = f"{result} {op.type} {right}"
+
+        return result
+
 
     def parse(self):
         return self.expr()
+
+# Simplify Boolean expression
+def simplify(expression):
+    tokens = tokenize(expression)
+    parser = Parser(tokens)
+    parsed_expression = parser.parse()
+
+    # Simplification logic
+    simplified_expression = parsed_expression  # Placeholder for actual simplification logic
+
+    return parsed_expression, simplified_expression

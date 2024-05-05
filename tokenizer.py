@@ -33,6 +33,12 @@ def tokenize(expression):
         elif char in ['(', ')', 'AND', 'OR', 'NOT']:
             tokens.append(Token(char))
             current_pos += len(char)
+        elif char == '&':
+            tokens.append(Token(TokenType.AND))
+            current_pos += 1
+        elif char == '|':
+            tokens.append(Token(TokenType.OR))
+            current_pos += 1
         else:
             # Identifier
             identifier = re.match(r'[a-zA-Z]+', expression[current_pos:])
@@ -44,4 +50,5 @@ def tokenize(expression):
 
     tokens.append(Token(TokenType.EOF))
     return tokens
+
 
