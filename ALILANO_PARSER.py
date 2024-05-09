@@ -99,3 +99,4 @@ if __name__ == "__main__":
         simplified_expression = simplify_boolean_expression(user_input)
         print("\nOriginal Expression:", original_expression)
         print("\nSimplified Expression:", simplified_expression)
+        print("\n- - - - - - - - - - - - - - - - - - - - - - - - ")
